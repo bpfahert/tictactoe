@@ -1,18 +1,25 @@
+:root {
+    font-family:'Courier New', Courier, monospace;
+}
+
 body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: teal;
 }
 
 header{
     margin-bottom: 50px;
     text-align: center;
     font-size: 4rem;
+    width: 100%;
 }
 
 .setup {
     display: flex;
-    justify-content: space-between;
+    width: 800px;
+    justify-content: center;
 }
 
 .scoreboard {
@@ -35,7 +42,6 @@ header{
     align-items: center;
     justify-content: center;
     font-size: 20rem;
-    font-family:'Courier New', Courier, monospace;
    
 }
 
@@ -59,10 +65,11 @@ header{
     border-bottom: none;
 }
 
-.X {
-    content: "X";
+button {
+        border-radius: 15px;
 }
 
-.O {
-    content: "O";
+.resetbtn {
+    margin-top: 90px;
+    font-size: 2rem;
 }

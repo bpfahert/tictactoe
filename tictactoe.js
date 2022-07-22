@@ -1,5 +1,6 @@
-//gameboard
 
+
+//gameboard
 const gameboard = (function() {
     let fullboard = ["", "", "", "", "", "", "", "", ""];
     let square = [];
@@ -7,6 +8,7 @@ const gameboard = (function() {
     let victory = false;
     let p1Array = [];
     let p2Array = [];
+
     
     //winning possibilities
     const victoryCombos = [
@@ -20,7 +22,7 @@ const gameboard = (function() {
         [0,4,8]
     ];
 
-
+//get square elements
     for (i = 0; i < 9; i++) {
         square[i] = document.getElementById(`square-${i}`)
     }
@@ -92,8 +94,28 @@ const gameboard = (function() {
       }
     }
 
+    let resetbtn = document.querySelector(".resetbtn");
+    resetbtn.addEventListener('click', e => {
+        reset();
+    })
 
-    
+    function reset() {
+        fullboard = ["", "", "", "", "", "", "", "", ""];
+        square = [];
+        playerTurn = 1;
+        victory = false;
+        p1Array = [];
+        p2Array = [];
+        arrayMatchValuesplayer1 = [];
+        arrayMatchValuesplayer2 = [];
+        arrayMatchplayer1 = "";
+        arrayMatchplayer2 = "";
+
+        boardspace.forEach((boardspace, index) => {
+            boardspace.textContent = "";
+        })
+    }
+
 
 //arrayMatch = victoryCombos.every(element => {
   //  return p1Array.includes(element);
@@ -101,25 +123,11 @@ const gameboard = (function() {
 //console.log(arrayMatch);
 
 
-
-    function updateBoard() {
-        
-        render();
-    }
-
     return {
         render,
-        updateBoard
+        reset
     }
 
-})();
-
-//displaycontroller
-const displayController = (function() {
-    
-
-
-    return {}
 })();
 
 
@@ -147,9 +155,9 @@ submitbtn.addEventListener('click', function() {
     player2.name = document.getElementById("player2name").value;
     alert(`${player1.name} vs ${player2.name}! ${player1.name} goes first!`)
     document.querySelector(".setup").style.display="none";
-    scoreboard.textContent= `Player 1: ${player1.name} \n Player 2: ${player2.name}`;
+    scoreboard.textContent= `Player 1: ${player1.name}    Player 2: ${player2.name}`;
     scoreboard.style.display = "block";
 },);
 
 
-gameboard.updateBoard();
+gameboard.render();
